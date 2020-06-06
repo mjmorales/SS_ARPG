@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/ui/PlayerNameEdit.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/JoinServerBtn.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ui/CreateServerBtn.gd" type="Script" id=3]
+
+[node name="MultiplayerMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -98.0
+margin_top = -168.0
+margin_right = 98.0
+margin_bottom = 169.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerNameContainer" type="VBoxContainer" parent="OptionsContainer"]
+margin_right = 196.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="OptionsContainer/PlayerNameContainer"]
+margin_right = 196.0
+margin_bottom = 14.0
+text = "Player Name"
+
+[node name="PlayerNameEdit" type="LineEdit" parent="OptionsContainer/PlayerNameContainer"]
+margin_top = 18.0
+margin_right = 196.0
+margin_bottom = 42.0
+script = ExtResource( 1 )
+
+[node name="JoinServerContainer" type="VBoxContainer" parent="OptionsContainer"]
+margin_top = 46.0
+margin_right = 196.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="OptionsContainer/JoinServerContainer"]
+margin_right = 196.0
+margin_bottom = 14.0
+text = "Join server by IP"
+
+[node name="JoinServerIPEdit" type="LineEdit" parent="OptionsContainer/JoinServerContainer"]
+margin_top = 18.0
+margin_right = 196.0
+margin_bottom = 42.0
+
+[node name="JoinServerBtn" type="Button" parent="OptionsContainer/JoinServerContainer"]
+margin_top = 46.0
+margin_right = 196.0
+margin_bottom = 66.0
+text = "Join Server"
+script = ExtResource( 2 )
+
+[node name="CreateServerContainer" type="VBoxContainer" parent="OptionsContainer"]
+margin_top = 116.0
+margin_right = 196.0
+margin_bottom = 136.0
+
+[node name="CreateServerBtn" type="Button" parent="OptionsContainer/CreateServerContainer"]
+margin_right = 196.0
+margin_bottom = 20.0
+text = "Create Server"
+script = ExtResource( 3 )
+[connection signal="text_changed" from="OptionsContainer/PlayerNameContainer/PlayerNameEdit" to="OptionsContainer/PlayerNameContainer/PlayerNameEdit" method="_on_PlayerNameEdit_text_changed"]
+[connection signal="pressed" from="OptionsContainer/JoinServerContainer/JoinServerBtn" to="OptionsContainer/JoinServerContainer/JoinServerBtn" method="_on_JoinServerBtn_pressed"]
+[connection signal="pressed" from="OptionsContainer/CreateServerContainer/CreateServerBtn" to="OptionsContainer/CreateServerContainer/CreateServerBtn" method="_on_CreateServerBtn_pressed"]
