@@ -8,6 +8,7 @@ func _on_JoinServerBtn_pressed():
 	var server_ip = "127.0.0.1"
 	if server_ip_edit.text:
 		server_ip = server_ip_edit.text
+	print(server_ip)
 	Network.join_server(server_ip)
 	Lobby.register_player(Lobby.my_info)
 	get_tree().change_scene("res://scenes/ui/PreGameLobby.tscn")

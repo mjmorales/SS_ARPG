@@ -1,18 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/objects/Player.gd" type="Script" id=1]
-[ext_resource path="res://scenes/objects/Entity.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Base/Base_head_1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/objects/NetworkEntity.tscn" type="PackedScene" id=2]
 
 [node name="Player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 3.56029, 2.42238 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 1.46303, -14.1426 )
+scale = Vector2( 1, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 

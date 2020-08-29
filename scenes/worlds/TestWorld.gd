@@ -10,7 +10,7 @@ func _spawn_players():
 		var player_info = Lobby.player_info[pid]
 		var player = preload("res://scenes/objects/Player.tscn").instance()
 		player.set_name(str(pid))
-		player.sname(player_info.name)		
+		player.sname(player_info.name)
 		player.set_network_master(pid)
 		player.pid = pid
 		if pid == get_tree().get_network_unique_id():
