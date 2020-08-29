@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-#	get_tree().connect("network_peer_connected", self, "_player_connected")
+	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 	get_tree().connect("connected_to_server", self, "_connected_ok")
 	get_tree().connect("connection_failed", self, "_connected_fail")
@@ -10,8 +10,8 @@ func _ready():
 remote var player_info = {}
 var my_info = { name = "John Doe" }
 
-#func _player_connected(id):
-#	rpc_id(id, "_register_player", my_info)
+func _player_connected(id):
+	rpc_id(id, "_register_player", my_info)
 
 func _player_disconnected(id):
 	player_info.erase(id)

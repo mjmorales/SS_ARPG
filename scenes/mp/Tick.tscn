@@ -4,6 +4,6 @@
 
 [node name="Tick" type="Timer"]
 process_mode = 0
-wait_time = 0.001
+wait_time = 0.03
 autostart = true
 script = ExtResource( 1 )
