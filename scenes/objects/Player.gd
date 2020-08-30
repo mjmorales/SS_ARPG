@@ -2,6 +2,10 @@ extends "./NetworkEntity.gd"
 
 export (int) var jump_speed = -1800
 
+func _ready():
+	speed = 800
+	gravity = 3000
+
 func get_input():
 	velocity.x = 0
 	if Input.is_action_pressed("ui_right"):
