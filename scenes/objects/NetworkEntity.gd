@@ -13,6 +13,7 @@ func owned_by_active_player():
 func broadcast():
 	if owned_by_active_player():
 		rpc_unreliable("_set_position", position)
+		_broadcast()
 
 func get_input():
 	pass
@@ -34,3 +35,6 @@ func _local_physics_process(delta):
 	get_input()
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func _broadcast():
+	pass
