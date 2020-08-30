@@ -1,6 +1,6 @@
 extends "./NetworkEntity.gd"
 
-export (int) var jump_speed = -1800
+export (int) var jump_speed = -900
 remote var direction := "right"
 remote var body_parts := {
 	"Head": "Base",
@@ -14,27 +14,29 @@ remote var animation_parts := {
 }
 
 func _ready():
-	speed = 800
-	gravity = 3000
+	speed = 400
+	gravity = 2000
 
 func get_input():
 	velocity.x = 0
-	set_body_parts("Idle")
+	set_animation_parts("Idle")
 	if Input.is_action_pressed("ui_right"):
 		direction = "right"
-		set_body_parts("Run")
+		set_animation_parts("Run")
 		velocity.x += speed
 	if Input.is_action_pressed("ui_left"):
 		direction = "left"
-		set_body_parts("Run")
+		set_animation_parts("Run")
 		velocity.x -= speed
 	if Input.is_action_just_pressed("ui_up"):
-			set_body_parts("Jump_Up")
+			set_animation_parts("Jump_Up")
 			if is_on_floor():
 				velocity.y = jump_speed
 
 func _unhandled_input(event):
 	if owned_by_active_player():
+		if Input.is_action_pressed("ui_down"):
+			set_body_parts("Iron1")
 		if event.is_action_pressed("ui_select"):
 			shoot_projectile()
 
@@ -53,10 +55,15 @@ func shoot_projectile():
 	var packed_scene_path := "res://scenes/objects/entities/Projectile.tscn"
 	EntitySpawner.spawn_entity(packed_scene_path, projectile_data, null)
 
-func set_body_parts(animation_state):
+func set_animation_parts(animation_state):
 	animation_parts["Head"] = animation_state
 	animation_parts["Torso"] = animation_state
 	animation_parts["Legs"] = animation_state
+	
+func set_body_parts(body_name):
+	body_parts["Head"] = body_name
+#	body_parts["Torso"] = body_name
+#	body_parts["Legs"] = body_name
 
 func _animation_for_body_part(body_part_key):
 	var format_key := {
